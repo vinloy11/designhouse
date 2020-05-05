@@ -53,6 +53,7 @@ return [
     */
 
     'url' => env('APP_URL', 'http://localhost'),
+    'client_url' => env('CLIENT_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -165,6 +166,8 @@ return [
         /*
          * Package Service Providers...
          */
+
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...
