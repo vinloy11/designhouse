@@ -2,16 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('me', 'User\MeController@getMe');
+
 Route::group(['middleware' => 'auth:api'], function () {
-//    Route::post('login', 'AuthController@login');
-//    Route::post('logout', 'AuthController@logout');
-//    Route::post('refresh', 'AuthController@refresh');
-//    Route::post('me', 'AuthController@me');
+    Route::post('logout', 'Auth\LoginController@logout');
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
     Route::post('register', 'Auth\RegisterController@register');
-    Route::post('verification/verify', 'Auth\VerificationController@verify')
+    Route::post('verification/verify/{user}', 'Auth\VerificationController@verify')
         ->name('verification.verify');
-    Route::post('verification/resend', 'Auth\VerificationController@resen');
+    Route::post('verification/resend', 'Auth\VerificationController@resend');
+    Route::post('login', 'Auth\LoginController@login');
 });
